@@ -18,29 +18,22 @@ def search_providers(postal_code, taxonomy_description, limit=10):
     except requests.RequestException as e:
         print(f"An error occurred: {e}")
         return None
-
-def main():
-    # Get user input for location and doctor type.
-    location = input("Enter your location (postal_code): ")
-    try:
-        postal_code = location
-    except ValueError:
-        print("Please enter your location in the format 'postal_code' (e.g., '11111').")
-        return
-
-    taxonomy = input("Enter the type of doctor you are looking for (e.g., 'Family Medicine'): ")
-
-    data = search_providers(postal_code, taxonomy)
+    
+def get_healthcare_info(location, taxonomy):
+    """
+    Get healthcare provider information based on location and taxonomy.
+    """
+    data = search_providers(location, taxonomy)
     if data and "results" in data and data["results"]:
-        print(f"\nFound {len(data['results'])} providers:\n")
+        providers = []
         for provider in data["results"]:
             basic_info = provider.get("basic", {})
             first_name = basic_info.get("first_name", "")
             last_name = basic_info.get("last_name", "")
             full_name = f"{first_name} {last_name}".strip()
-            
-            # Get the primary address (first address in the array)
+            # print(basic_info)
             addresses = provider.get("addresses", [])
+            # print(data)
             if addresses:
                 primary = addresses[0]
                 address_line = primary.get("address_1", "")
@@ -51,11 +44,15 @@ def main():
             else:
                 location_info = "No address provided."
             
-            print("Name:", full_name)
-            print("Location:", location_info)
-            print("-" * 40)
-    else:
-        print("No providers found for the given criteria.")
-
+            provider_info = {
+                "name": full_name,
+                "location": location_info
+            }
+            providers.append(provider_info)
+            return providers
+    
+# Example usage
 if __name__ == "__main__":
-    main()
+    providers=get_healthcare_info("16870", "Family Medicine")
+    for i in providers:
+        print(i)
