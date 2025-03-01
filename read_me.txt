@@ -25,7 +25,7 @@ incase:
 
 import google.generativeai as genai
 
-genai.configure(api_key="AIzaSyB27EsbZbJT3aV37YXFyRG86qe4-TTEpCc")
+genai.configure(api_key="")
 
 model = genai.GenerativeModel('gemini-1.5-pro-latest')
 
