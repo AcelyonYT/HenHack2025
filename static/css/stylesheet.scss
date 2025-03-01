@@ -1,0 +1,92 @@
+$background-color: #343541;
+$text-color: #d1d5db;
+$form-background-color: #40414f;
+$input-background-color: #575757;
+$button-background-color: #10a37f;
+$button-hover-background-color: #0e8c6a;
+$chat-bubble-color: #40414f;
+$chat-bubble-user-color: #10a37f;
+
+// Reusable classes
+.border-radius {
+    border-radius: 8px;
+}
+
+.box-shadow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.padding {
+    padding: 20px;
+}
+
+body {
+    background-color: $background-color;
+    color: $text-color;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    background-color: $form-background-color;
+    @extend .padding;
+    @extend .border-radius;
+    @extend .box-shadow;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: $text-color;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid $input-background-color;
+    @extend .border-radius;
+    background-color: $input-background-color;
+    color: $text-color;
+}
+
+button {
+    background-color: $button-background-color;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    @extend .border-radius;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $button-hover-background-color;
+    }
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    @extend .padding;
+    background-color: $form-background-color;
+    @extend .border-radius;
+    @extend .box-shadow;
+}
+
+.chat-bubble {
+    padding: 10px;
+    margin-bottom: 10px;
+    @extend .border-radius;
+    background-color: $chat-bubble-color;
+    color: $text-color;
+
+    &.user {
+        background-color: $chat-bubble-user-color;
+        color: #ffffff;
+    }
+}

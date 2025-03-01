@@ -1,0 +1,73 @@
+.border-radius, .chat-bubble, .chat-container, button, input[type=text], form {
+  border-radius: 8px;
+}
+
+.box-shadow, .chat-container, form {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.padding, .chat-container, form {
+  padding: 20px;
+}
+
+body {
+  background-color: #343541;
+  color: #d1d5db;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+form {
+  background-color: #40414f;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #d1d5db;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #575757;
+  background-color: #575757;
+  color: #d1d5db;
+}
+
+button {
+  background-color: #10a37f;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #0e8c6a;
+}
+
+.chat-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: #40414f;
+}
+
+.chat-bubble {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #40414f;
+  color: #d1d5db;
+}
+.chat-bubble.user {
+  background-color: #10a37f;
+  color: #ffffff;
+}
+
+/*# sourceMappingURL=stylesheet.css.map */
