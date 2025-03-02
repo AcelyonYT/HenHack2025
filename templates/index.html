@@ -10,13 +10,15 @@
     <body>
         <div class="chat-container padding border-radius box-shadow">
             <div id="chat-messages" class="chat-messages">
-                <div class="chat-bubble border-radius">Hello! How can I assist you today?</div>
+                <div class="chat-bubble border-radius">Hello! Please input your Zip code then your symptoms to find a medical provider</div>
             </div> 
             <form class="padding border-radius box-shadow" onsubmit="handleSubmit(event)">
                 <label for="message">Your Message:</label>
                 <input type="text" id="message" name="inputText" placeholder="Type your message here..." class="border-radius">
                 <button type="submit" class="border-radius">Send</button>
             </form>
+            <p>*Please note this is not a medical profesional, do not take advice from robots</p>
         </div>
+        
     </body>
 </html>

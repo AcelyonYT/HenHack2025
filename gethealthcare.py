@@ -50,19 +50,18 @@ def get_healthcare_info(location, taxonomy):
             email = "Not available"
             if prov.get("endpoints"):
                 email = prov["endpoints"][0].get("endpoint", "Not available")
-
-            provider_info = {
-                "name": full_name,
-                "location": location_info,
-                "taxonomy": taxonomy,
-                "Phone": telephone_number,
-                "Email": email
-            }
-            provider_list.append(provider_info)
-        return provider_list
+            print(full_name)
+            provider_info = f"""
+            Name: {full_name},Location: {location_info},Taxonomy: {taxonomy},Phone: {telephone_number},Email: {email}
+            """
+            provider_list.append(provider_info.strip())
+        
+        # Join the provider list into one big string
+        # print(provider_list)
+        provider_string = " ".join(provider_list)
+        return provider_string
 
 # Example usage
 if __name__ == "__main__":
-    providers = get_healthcare_info("16870", "Family Medicine")
-    for provider in providers:
-        print(provider)
+    providers = get_healthcare_info("16870", "Gastroenterology")
+    print(providers)

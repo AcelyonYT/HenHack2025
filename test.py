@@ -1,9 +1,9 @@
+
 import google.generativeai as genai
 
-genai.configure(api_key="")
+genai.configure(api_key="AIzaSyD4GZGjD4xOyh4dW8d_9VYvfSO1F3gQHfc")
 
 model = genai.GenerativeModel('gemini-1.5-pro-latest')
-
 
 # Initialize the chat session
 # The session is used to maintain the context of the conversation
@@ -19,9 +19,8 @@ def get_ai_response(prompt):
         print(f"Error getting response from Gemini: {e}")
         return "Sorry, I encountered an error processing your request."
 
-
 def main():
-    prompt = "-- You are a healthcare bot\n --When responding to the user only reply with only one medical care specalist taxomomy based on there smpytoms\n --Respond with only from this list of health care taxonomy that match the symptoms of the sure:Cardiology,Oncology,Neurology,Orthopedics,Pediatrics,Obstetrics, Gynecology,Psychiatry,Dermatology,Endocrinology,Gastroenterology,Nephrology,Pulmonology,Infectious Disease,Geriatrics,Rheumatology,Urology,Emergency Medicine,Pathology,Physical Medicine,Rehabilitation "
+    prompt = open("optimal_prompt.txt","r")
     pre_prompt_response = get_ai_response(prompt)
     print("Pre-prompt response: ", pre_prompt_response)
     
@@ -34,7 +33,6 @@ def main():
             break
         ai_response = get_ai_response(user_input)
         print("AI: ", ai_response)
-
 
 if __name__ == "__main__":
     main()

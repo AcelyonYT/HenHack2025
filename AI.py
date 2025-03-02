@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 from google import genai
-
+import google.generativeai as genai
 
 def get_gemini_api_key():
      load_dotenv()
@@ -10,11 +10,28 @@ def get_gemini_api_key():
          raise ValueError("No Gemini API key found. Please set the GEMINI_API_KEY environment variable.")
      return api_key
 
-def make_gemini_request(user_input):
-     api_key = get_gemini_api_key()
-     client = genai.Client(api_key=api_key)
-     response = client.models.generate_content(
-         model="gemini-2.0-flash", contents=user_input)
-     if not response:
-         raise Exception("Request failed.")
-     return response
+
+genai.configure(api_key=get_gemini_api_key())
+model = genai.GenerativeModel('gemini-1.5-pro-latest')
+
+# Initialize the chat session
+# The session is used to maintain the context of the conversation
+# Previous chat session cannot be recalled
+
+chat = model.start_chat(history=[]) #might need to moved
+
+def get_ai_response(prompt):
+    try:
+        response = chat.send_message(prompt) # Add error handling here.
+        return response
+    except Exception as e:
+        print(f"Error getting response from Gemini: {e}")
+        return "Sorry, I encountered an error processing your request."
+
+
+
+def AI_startup():
+    prompt = open("optimal_prompt.txt","r")
+    pre_prompt_response = get_ai_response(prompt)
+    print("Pre-prompt response: ", pre_prompt_response)
+    

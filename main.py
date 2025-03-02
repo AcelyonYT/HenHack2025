@@ -1,11 +1,9 @@
 from flask_backend import app;
-
-#Grabbing API without disclosing it
-
-# Example usage
+from AI import AI_startup;
 if __name__ == "__main__":
     
     try:
+        AI_startup()
         app.run()
     except ValueError as e:
         print(e)

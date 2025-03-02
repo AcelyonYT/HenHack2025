@@ -10,8 +10,9 @@ python HenHack2025/main.py
 
 
 
-
-
+hook up healthcare test ai files to main
+split out the zip code from user 
+split out Specialist from ai response
 
 
 pre promp 
@@ -21,6 +22,7 @@ pre promp
 
 
 
+<<<<<<< Updated upstream
 incase: 
 
 import google.generativeai as genai
@@ -62,6 +64,8 @@ if __name__ == "__main__":
     main()
 
 
+=======
+>>>>>>> Stashed changes
 
 Level II Taxonomy
 Acupuncturist
