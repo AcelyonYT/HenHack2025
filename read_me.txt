@@ -24,6 +24,7 @@ pre promp
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 incase: 
 
 import google.generativeai as genai
@@ -65,6 +66,8 @@ if __name__ == "__main__":
     main()
 
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
