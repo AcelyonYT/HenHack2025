@@ -1,6 +1,6 @@
 import requests
 
-def search_providers(postal_code, taxonomy_description, limit=10):
+def search_providers(postal_code:str, taxonomy_description:str):
     """
     Searches for providers using the NPPES API given a postal_code and taxonomy description.
     """
@@ -9,10 +9,9 @@ def search_providers(postal_code, taxonomy_description, limit=10):
         "version": "2.1",
         "postal_code": postal_code,
         "taxonomy_description": taxonomy_description,
-        "limit": limit
     }
     try:
-        response = requests.get(url, params=params, timeout=10)
+        response = requests.get(url, params=params)
         response.raise_for_status()  # Raises an HTTPError if the HTTP request returned an unsuccessful status code.
         return response.json()
     except requests.RequestException as e:
@@ -50,15 +49,13 @@ def get_healthcare_info(location, taxonomy):
             email = "Not available"
             if prov.get("endpoints"):
                 email = prov["endpoints"][0].get("endpoint", "Not available")
-            print(full_name)
             provider_info = f"""
-            Name: {full_name},Location: {location_info},Taxonomy: {taxonomy},Phone: {telephone_number},Email: {email}
+            Name: {full_name} Location: {location_info}  Phone: {telephone_number} Email: {email}
             """
             provider_list.append(provider_info.strip())
-        
-        # Join the provider list into one big string
-        # print(provider_list)
-        provider_string = " ".join(provider_list)
+            
+        # Join the provider list into one big string with new lines
+        provider_string = "\n\n".join(provider_list)
         return provider_string
 
 # Example usage

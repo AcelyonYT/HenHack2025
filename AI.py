@@ -12,7 +12,13 @@ def get_gemini_api_key():
 
 
 genai.configure(api_key=get_gemini_api_key())
-model = genai.GenerativeModel('gemini-1.5-pro-latest')
+pprompt = open("optimal_prompt.txt","r")
+# pre_prompt_response = get_ai_response(pprompt)
+model = genai.GenerativeModel(model_name='gemini-1.5-pro-latest',system_instruction=pprompt)
+# model=genai.GenerativeModel(
+#     model_name="gemini-1.5-pro-002",
+#     system_instruction="You are a cat. Your name is Neko.")
+# model = genai.GenerativeModel(' gemini-2.0-flash')
 
 # Initialize the chat session
 # The session is used to maintain the context of the conversation

@@ -29,6 +29,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow-y: auto;  /* Enable vertical scrolling */
 }
 
 form {
@@ -91,5 +92,5 @@ button {
 }
 
 .white {
-    color: #ffffff;
+    color: $chat-bubble-color;
 }

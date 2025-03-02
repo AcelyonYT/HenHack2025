@@ -18,15 +18,16 @@ def submit():
         if not data or 'inputText' not in data:
             return jsonify({'error': 'Invalid input'}), 400
         zip = data['inputText'].split(' ')[0]
-        print (zip)
         userMessage = data['inputText']
         response = get_ai_response(userMessage)
-        print (response.text)
-        # providers = get_healthcare_info(zip, response.text)
+        if response.text.split(' ')[0] == "Sorry,":
+            return jsonify({'response': response.text.strip("\n")})
+        providers = get_healthcare_info(str(zip), response.text.strip("\n"))
         if hasattr(response, 'text'):  # Ensure response has a 'text' attribute
-            return jsonify({'response': response.text})
+            return jsonify({'response': response.text.strip("\n") + "\n" + providers})
     except ValueError:
         return jsonify({'error': 'Invalid input'}), 400
+
 
 
 
