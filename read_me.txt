@@ -8,8 +8,9 @@ AI -> Flask -> Webpage
 
 python HenHack2025/main.py
 
+#maybe create doc strings????
 
-
+#completed
 hook up healthcare test ai files to main
 split out the zip code from user 
 split out Specialist from ai response
